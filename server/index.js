@@ -8,7 +8,10 @@ const picture = require("./api/routes/picture.routes");
 
 connect();
 
+
 const app = express();
+
+app.set("secretKey", "nodeRestApi");
 
 const PORT = 3000;
 

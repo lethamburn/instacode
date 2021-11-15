@@ -1,6 +1,6 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const jasonwebtoken = require("jsonwebtoken");
 
 const getAllUsers = async (req, res, next) => {
     try {
@@ -24,6 +24,7 @@ const createUser = async (req, res, next) => {
         newUser.emoji = req.body.emoji;
         newUser.email = req.body.email;
         newUser.password = req.body.password;
+        newUser.description = req.body.description;
         newUser.pictures = [];
         newUser.followUsers = [];
 
@@ -48,7 +49,9 @@ const authenticate = async (req, res, next) => {
         const userInfo = await User.findOne({ email: req.body.email })
         if (bcrypt.compareSync(req.body.password, userInfo.password)) {
             userInfo.password = null
-            const token = jwt.sign(
+            console.log(req.body)
+            console.log(jasonwebtoken);
+            const token = jasonwebtoken.sign(
                 {
                     id: userInfo._id,
                     name: userInfo.name
@@ -62,7 +65,7 @@ const authenticate = async (req, res, next) => {
                 data: { user: userInfo, token: token },
             });
         } else {
-            return res.json({ status: 400, message: HTTPSTATUSCODE[400], data: null });
+            return res.json({ status: 400, message: '400 meehhhh', data: null });
         }
     } catch (err) {
         return next(err);
