@@ -2,6 +2,10 @@ const express = require("express");
 
 const { connect } = require("./config/db");
 
+const user = require("./api/routes/user.routes");
+const tag = require("./api/routes/tag.routes");
+const picture = require("./api/routes/picture.routes");
+
 connect();
 
 const app = express();
@@ -26,6 +30,10 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
+
+app.use("/user", user);
+app.use("/tag", tag);
+app.use("/picture", picture);
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
