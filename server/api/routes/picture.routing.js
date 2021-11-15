@@ -4,7 +4,7 @@ const fileMiddleware = require("../../middlewares/file.middleware");
 
 const {
   getAllPictures,
-  getPictureById,
+  getPicture,
   postNewPicture,
   deletePicture,
 } = require("../controllers/picture.controller");
