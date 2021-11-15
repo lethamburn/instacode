@@ -4,11 +4,13 @@ const fileMiddleware = require("../../middlewares/file.middleware");
 
 const {
   getAllPictures,
+  getPictureById,
   postNewPicture,
   deletePicture,
 } = require("../controllers/picture.controller");
 
 router.get("/", getAllPictures);
+router.get("/:pictureId", getPictureById);
 router.post(
   "/",
   [fileMiddleware.upload.single("picture"), fileMiddleware.uploadToCloudinary],

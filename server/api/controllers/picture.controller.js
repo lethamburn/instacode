@@ -13,6 +13,20 @@ const getAllPictures = async (req, res, next) => {
   }
 };
 
+const getPictureById = async (req, res, next) => {
+  try {
+    const { pictureId } = req.params;
+    const pictureById = await Picture.findById(pictureId);
+    return res.json({
+      status: 200,
+      message: "KO get picture by id",
+      data: { picture: pictureById },
+    });
+  } catch (err) {
+    return next(err);
+  }
+};
+
 const postNewPicture = async (req, res, next) => {
   try {
     let picture = req.file ? req.file.url : null;
@@ -40,4 +54,9 @@ const deletePicture = async (req, res, next) => {
     return next(error);
   }
 };
-module.exports = { getAllPictures, postNewPicture, deletePicture };
+module.exports = {
+  getAllPictures,
+  getPictureById,
+  postNewPicture,
+  deletePicture,
+};
