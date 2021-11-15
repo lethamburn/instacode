@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const TagSchema = new Schema(
     {
-        enum: ['JS', 'NODE', 'ANGULAR', 'REACT', 'CSS', 'HTML'],
+        tag: { type: String, enum: ['JS', 'NODE', 'ANGULAR', 'REACT', 'CSS', 'HTML'] },
     },
     { timestamps: true }
 );
