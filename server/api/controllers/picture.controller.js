@@ -38,6 +38,7 @@ const postNewPicture = async (req, res, next) => {
     });
 
     const createdPicture = await newPicture.save();
+    await fs.unlinkSync(picture)
 
     return res.status(201).json(createdPicture);
   } catch (error) {
