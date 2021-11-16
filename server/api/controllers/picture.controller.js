@@ -1,6 +1,6 @@
 const Picture = require("../models/picture.model");
 
-const fs = require('fs')
+const fs = require("fs");
 
 const getAllPictures = async (req, res, next) => {
   try {
@@ -37,7 +37,7 @@ const postNewPicture = async (req, res, next) => {
       description: req.body.description,
       picture: picture,
       tags: req.body.tags,
-     /*  idUser: req.user._id */
+      /* createdBy: req.user._id, */
     });
 
     const createdPicture = await newPicture.save();
