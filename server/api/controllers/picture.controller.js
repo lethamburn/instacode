@@ -37,6 +37,7 @@ const postNewPicture = async (req, res, next) => {
       description: req.body.description,
       picture: picture,
       tags: req.body.tags,
+     /*  idUser: req.user._id */
     });
 
     const createdPicture = await newPicture.save();
