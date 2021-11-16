@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const fileMiddleware = require("../../middlewares/file.middleware");
+const upload = require("../../middlewares/file.middleware");
 const { isAuth } = require("../../middlewares/auth.middleware");
 
 const {
@@ -15,7 +15,7 @@ router.get("/:pictureId", getPictureById);
 router.post(
   "/",
   [isAuth],
-  [fileMiddleware.upload.single("picture"), fileMiddleware.uploadToCloudinary],
+  [upload.single("picture")],
   postNewPicture
 );
 router.delete("/:id", [isAuth], deletePicture);

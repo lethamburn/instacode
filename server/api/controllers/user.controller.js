@@ -52,7 +52,7 @@ const createUser = async (req, res, next) => {
             return res.json({
                 status: 201,
                 message: 'Todo Chachi',
-                data: { user: userInfo, token: token }
+                data: { user: userDb, token: token }
             });
         }
 
