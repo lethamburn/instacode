@@ -1,38 +1,40 @@
 const jwt = require("jsonwebtoken")
-const isAuth = (req, res, next) => {
+const User = require('../user/user.model')
+const { setError } = require('../utils/error/error.utils')
 
-    const authorization = req.headers.authorization;
-    if (!authorization) {
-        return res.json({
-            status: 401,
-            message: 'KO 401',
-            data: null
-        })
-    }
 
-    const splits = authorization.split(" ")
-    if (splits.length != 2 || splits[0] != "Bearer") {
-        return res.json({
-            status: 400,
-            message: 'KO 400',
-            data: null
-        })
-    }
-
-    const jwtString = splits[1];
+const isAuth = async (req, res, next) => {
     try {
-        var token = jwt.verify(jwtString, req.app.get("secretKey"));
-    } catch (err) {
-        return next(err)
+        const token = req.headers.authorization;
+        if (!token) {
+            return next(setError(404, 'Unauthorized'))
+        }
+        const parsedToken = token.replace('Bearer ', '');
+        const validToken = jwt.verify(parsedToken, process.env.JWT_SECRET)
+        const userLogued = await User.findById(validToken.id)
+        userLogued.password = null
+        req.user = userLogued
+        next()
+    } catch (error) {
+        return next(error)
     }
-    const authority = {
-        id: token.id,
-        name: token.name
-    }
-    req.authority = authority
-    next()
 }
 
 module.exports = {
-    isAuth,
+    isAuth
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
