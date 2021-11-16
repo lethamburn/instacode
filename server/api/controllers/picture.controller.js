@@ -49,7 +49,7 @@ const deletePicture = async (req, res, next) => {
     const { id } = req.params;
     const pictureDeleted = await Picture.findByIdAndDelete(id);
     if(!pictureDeleted) return next(setError(404,'Picture not found'))
-    return res.staus(200).json("Picture borrada correctamente");
+    return res.status(200).json("Picture borrada correctamente");
   } catch (error) {
     return next(error);
   }
