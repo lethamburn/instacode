@@ -5,7 +5,7 @@ const jasonwebtoken = require("jsonwebtoken");
 const getAllUsers = async (req, res, next) => {
     try {
 
-        const users = await User.find();
+        const users = await User.find().populate("picture");
         return res.json({
             status: 200,
             message: 'Todo chachi',
