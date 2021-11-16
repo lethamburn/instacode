@@ -52,7 +52,7 @@ const deletePicture = async (req, res, next) => {
   try {
     const { id } = req.params;
     await Picture.findByIdAndDelete(id);
-    return res.staus(200).json("Picture borrada correctamente");
+    return res.status(200).json("Picture borrada correctamente");
   } catch (error) {
     return next(error);
   }
