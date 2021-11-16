@@ -18,7 +18,7 @@ const getAllPictures = async (req, res, next) => {
 const getPictureById = async (req, res, next) => {
   try {
     const { pictureId } = req.params;
-    const pictureById = await Picture.findById(pictureId).populate("user");
+    const pictureById = await Picture.findById(pictureId);
     return res.json({
       status: 200,
       message: "KO get picture by id",
