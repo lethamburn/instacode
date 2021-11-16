@@ -18,5 +18,6 @@ router.post(
   [upload.single("picture")],
   postNewPicture
 );
+
 router.delete("/:id", [isAuth], deletePicture);
 module.exports = router;
