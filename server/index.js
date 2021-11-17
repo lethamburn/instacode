@@ -13,13 +13,13 @@ const app = express();
 
 app.set("secretKey", "nodeRestApi");
 
-const PORT = 3000;
+const PORT = 4000;
 
 const cors = require("cors");
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:4200"],
+    origin: ["http://localhost:3000", "http://localhost:4000"],
     credentials: true,
   })
 );

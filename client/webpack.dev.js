@@ -30,6 +30,7 @@ module.exports = merge(common, {
     devtool: "eval-source-map",
     devServer: {
         port: "8081",
+        historyApiFallback: true
     },
     stats: "errors-only",
     plugins: [

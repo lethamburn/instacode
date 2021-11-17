@@ -1,11 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { AboutComponent } from "./components/AboutComponent";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
 ReactDOM.render(
   <div>
-    <h1>Hello I´m Alberto Rivera</h1>
-    <AboutComponent />
+    <App />
   </div>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

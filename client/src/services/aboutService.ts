@@ -6,6 +6,6 @@ export const getAbout = () => {
   fetch(`${baseURL}/about`);
 };
 
-export const getAboutInfo = (name: string): string => {
+export const getAboutInfo = (name) => {
   return `This is a Boilerplate - ${name}`;
 }
