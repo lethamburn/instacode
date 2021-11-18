@@ -16,6 +16,7 @@ const App = () => {
     <Router>
       <UserContext.Provider value={{ user, saveUser }}>
         <Nav />
+        {user ? <p>Hola: {user.name}</p> : null}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pictures" element={<Pictures />} />
@@ -25,6 +26,7 @@ const App = () => {
         </Routes>
       </UserContext.Provider>
     </Router>
+  
   );
 };
 
