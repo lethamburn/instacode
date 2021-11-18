@@ -20,7 +20,7 @@ const Gallery = () => {
         {pictures.map((picture) => {
           return (
             <li key={JSON.stringify(picture)}>
-              <img src={picture.picture} alt="Picture" />
+              <img src={picture.picture} alt="Picture" width="400px" />
             </li>
           );
         })}
