@@ -14,7 +14,6 @@ router.get("/", getAllPictures);
 router.get("/:pictureId", getPictureById);
 router.post(
   "/",
-  [isAuth],
   [fileMiddleware.upload.single("picture"), fileMiddleware.uploadToCloudinary],
   postNewPicture
 );

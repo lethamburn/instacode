@@ -34,9 +34,7 @@ const postNewPicture = async (req, res, next) => {
     let picture = req.file ? req.file.url : null;
 
     const newPicture = new Picture({
-      description: req.body.description,
-      picture: picture,
-      tags: req.body.tags,
+      picture: picture
       /* createdBy: req.user._id, */
     });
 
