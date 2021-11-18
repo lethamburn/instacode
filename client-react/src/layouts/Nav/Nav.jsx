@@ -17,6 +17,9 @@ const Nav = () => {
       <Link to="/register">
           <button>Register</button>
       </Link>
+      <Link to="/logout">
+          <button>Logout</button>
+      </Link>
   </nav>;
 };
 
